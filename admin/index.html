@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F-Log2C LUT 后台管理</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>F-Log2C LUT 后台管理</h1>
+            <p class="subtitle">上传和管理 LUT 文件</p>
+        </div>
+        <a href="../index.html" class="back-btn">← 返回主页</a>
+    </div>
+
+    <div class="container">
+        <div class="admin-panel">
+            <div class="section">
+                <h2>📤 上传新 LUT</h2>
+                <div class="upload-form">
+                    <div class="form-group">
+                        <label>LUT ID (英文标识)</label>
+                        <input type="text" id="lut-id" placeholder="例如: new-lut-name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>英文名称</label>
+                        <input type="text" id="name-en" placeholder="English Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>中文名称</label>
+                        <input type="text" id="name-zh" placeholder="中文名称">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>英文描述</label>
+                        <input type="text" id="desc-en" placeholder="English description">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>中文描述</label>
+                        <input type="text" id="desc-zh" placeholder="中文描述">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>LUT 文件 (.cube)</label>
+                        <input type="file" id="lut-file" accept=".cube">
+                    </div>
+                    
+                    <button id="upload-btn" class="btn btn-primary">上传 LUT</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📋 当前 LUT 列表</h2>
+                <div id="lut-list" class="lut-list"></div>
+            </div>
+
+            <div class="section">
+                <h2>💾 导出配置文件</h2>
+                <p class="note">修改后请下载配置文件,替换 <code>luts/luts-config.json</code></p>
+                <button id="export-btn" class="btn btn-secondary">下载 luts-config.json</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

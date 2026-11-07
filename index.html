@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title data-i18n="title">F-Log2C LUT Preview</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="glass-header">
+            <div class="header-content">
+                <h1 class="logo-title" data-i18n="title">F-Log2C LUT Preview</h1>
+                <p class="subtitle" data-i18n="subtitle">专业色彩查找表在线预览</p>
+            </div>
+            <button id="lang-toggle" class="glass-button lang-toggle">EN</button>
+        </header>
+
+        <div id="upload-area" class="upload-area glass-panel">
+            <div class="upload-content">
+                <div class="upload-icon">📷</div>
+                <h2 data-i18n="dragDrop">拖拽图片到此处或点击上传</h2>
+                <p data-i18n="supportedFormats">支持 JPG、PNG、WebP 格式</p>
+            </div>
+            <input type="file" id="upload-input" accept="image/*" hidden>
+        </div>
+
+        <div id="workspace" class="workspace" style="display: none;">
+            <div class="preview-section">
+                <div class="canvas-container glass-panel">
+                    <canvas id="preview-canvas"></canvas>
+                    <div id="glass-overlay" class="glass-overlay"></div>
+                </div>
+            </div>
+
+            <aside class="control-panel glass-panel">
+                <div class="control-group">
+                    <label class="control-label" data-i18n="selectLUT">选择胶片风格</label>
+                    <div class="lut-dropdown glass-dropdown" id="lut-dropdown">
+                        <span id="current-lut-name" data-i18n="noLutSelected">请选择风格</span>
+                        <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12">
+                            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        </svg>
+                    </div>
+                    <div id="lut-menu" class="lut-menu glass-menu" style="display: none;"></div>
+                </div>
+
+                <div class="lut-swiper-wrapper">
+                    <div id="lut-swiper" class="lut-swiper"></div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" data-i18n="adjustments">调整参数</label>
+                    
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span data-i18n="intensity">LUT 强度</span>
+                            <span class="slider-value"><span id="intensity-value">100</span>%</span>
+                        </div>
+                        <input type="range" id="intensity-slider" class="glass-slider" min="0" max="1" step="0.01" value="1">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span data-i18n="contrast">对比度</span>
+                            <span class="slider-value"><span id="contrast-value">100</span>%</span>
+                        </div>
+                        <input type="range" id="contrast-slider" class="glass-slider" min="0.5" max="1.5" step="0.01" value="1">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span data-i18n="saturation">饱和度</span>
+                            <span class="slider-value"><span id="saturation-value">100</span>%</span>
+                        </div>
+                        <input type="range" id="saturation-slider" class="glass-slider" min="0" max="2" step="0.01" value="1">
+                    </div>
+                </div>
+
+                <div class="control-group button-group">
+                    <button id="reset-btn" class="glass-button btn-secondary" data-i18n="reset">重置</button>
+                    <button id="download-btn" class="glass-button btn-primary" data-i18n="download">下载图片</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div id="loading" class="loading" style="display: none;">
+        <div class="glass-spinner"></div>
+        <p class="loading-text" data-i18n="processing">处理中...</p>
+    </div>
+
+    <script src="js/lut-engine.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
