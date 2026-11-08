@@ -39,7 +39,7 @@ class AdminApp {
             item.innerHTML = `
                 <div class="lut-info">
                     <h4>${lut.name_zh} / ${lut.name_en}</h4>
-                    <p>ID: ${lut.id} | 文件: ${lut.file}</p>
+                    <p>ID: ${lut.id} | 分类: ${lut.category || 'other'} | 文件: ${lut.file}</p>
                 </div>
                 <div class="lut-actions">
                     <button class="btn-delete" data-index="${index}">删除</button>
@@ -60,6 +60,8 @@ class AdminApp {
         const id = document.getElementById('lut-id').value.trim();
         const nameEn = document.getElementById('name-en').value.trim();
         const nameZh = document.getElementById('name-zh').value.trim();
+        const categoryEl = document.getElementById('lut-category');
+        const category = categoryEl ? categoryEl.value : 'vivid';
         const descEn = document.getElementById('desc-en').value.trim();
         const descZh = document.getElementById('desc-zh').value.trim();
         const fileInput = document.getElementById('lut-file');
@@ -83,6 +85,7 @@ class AdminApp {
         const newLUT = {
             id: id,
             file: file.name,
+            category: category,
             name_en: nameEn,
             name_zh: nameZh,
             description_en: descEn,

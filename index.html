@@ -1,97 +1,240 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title data-i18n="title">F-Log2C LUT Preview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0b0c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Film Glass · F-Log2C</title>
+    <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/app-icon.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div class="app-container">
-        <header class="glass-header">
-            <div class="header-content">
-                <h1 class="logo-title" data-i18n="title">F-Log2C LUT Preview</h1>
-                <p class="subtitle" data-i18n="subtitle">专业色彩查找表在线预览</p>
-            </div>
-            <button id="lang-toggle" class="glass-button lang-toggle">EN</button>
-        </header>
+<body class="is-empty">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="tile-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3b3a37"/>
+                <stop offset="1" stop-color="#141413"/>
+            </linearGradient>
+            <linearGradient id="lens-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6e2b8"/>
+                <stop offset="0.55" stop-color="#d9a868"/>
+                <stop offset="1" stop-color="#9c6a3a"/>
+            </linearGradient>
+            <linearGradient id="body-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fbf9f4"/>
+                <stop offset="1" stop-color="#e7e2d8"/>
+            </linearGradient>
+        </defs>
+        <symbol id="app-icon" viewBox="0 0 120 120">
+            <rect width="120" height="120" rx="27" fill="url(#tile-grad)"/>
+            <rect x="0.75" y="0.75" width="118.5" height="118.5" rx="26.3" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+            <path d="M47 38.5 51.6 31.8c.8-1.2 2.1-1.8 3.5-1.8h9.8c1.4 0 2.7.7 3.5 1.8L73 38.5Z" fill="url(#body-grad)"/>
+            <rect x="24" y="37" width="72" height="51" rx="13" fill="url(#body-grad)"/>
+            <circle cx="60" cy="62.5" r="18.5" fill="#1d1c1a"/>
+            <circle cx="60" cy="62.5" r="12.5" fill="url(#lens-grad)"/>
+            <circle cx="60" cy="62.5" r="5.5" fill="#1d1c1a" opacity="0.85"/>
+            <circle cx="55.6" cy="58" r="2.6" fill="#fff" opacity="0.9"/>
+            <circle cx="85" cy="47" r="3" fill="#d9a868"/>
+            <rect x="31" y="44" width="10" height="4" rx="2" fill="#cfc8bb"/>
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+        <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.7" fill="currentColor"/><path d="m4.5 17 4.8-4.6 3.4 3.1 2.6-2.3 4.2 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+        <symbol id="i-swipe" viewBox="0 0 24 24"><path d="M7 8 3.5 12 7 16M17 8l3.5 4-3.5 4M4 12h16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-save" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4.2-4.2M12 15l4.2-4.2M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M5 7h9m4 0h1M5 17h1m4 0h9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="16" cy="7" r="2.3" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="8" cy="17" r="2.3" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+        <symbol id="i-compare" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></symbol>
+        <symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m7 14 5-5 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-left" viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-right" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m6 12.5 4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-strength" viewBox="0 0 24 24"><rect x="4" y="6" width="11" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="9" y="4" width="11" height="12" rx="2.5" fill="currentColor" opacity="0.45"/></symbol>
+        <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 4v16a8 8 0 0 0 0-16Z" fill="currentColor"/></symbol>
+        <symbol id="i-colour" viewBox="0 0 24 24"><path d="M12 3.5c3.2 4 5.5 7 5.5 10a5.5 5.5 0 0 1-11 0c0-3 2.3-6 5.5-10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 14a3 3 0 0 0 3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-reset" viewBox="0 0 24 24"><path d="M5 12a7 7 0 1 0 2.1-5M5 4.5V8h3.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </svg>
 
-        <div id="upload-area" class="upload-area glass-panel">
-            <div class="upload-content">
-                <div class="upload-icon">📷</div>
-                <h2 data-i18n="dragDrop">拖拽图片到此处或点击上传</h2>
-                <p data-i18n="supportedFormats">支持 JPG、PNG、WebP 格式</p>
+    <div class="ambient" aria-hidden="true">
+        <div class="aurora"></div>
+        <canvas id="ambient-canvas" width="48" height="32"></canvas>
+        <div class="grain"></div>
+    </div>
+
+    <header class="topbar">
+        <a class="brand" href="./" aria-label="Film Glass">
+            <svg class="brand-icon"><use href="#app-icon"/></svg>
+            <span class="brand-text">
+                <strong>Film Glass</strong>
+                <span data-i18n="brandSub">F-Log2C 胶片实验室</span>
+            </span>
+        </a>
+        <div class="top-actions">
+            <button id="new-photo-btn" class="glass glass-btn compact" type="button" hidden>
+                <svg class="icon"><use href="#i-photo"/></svg>
+                <span data-i18n="newPhoto">换照片</span>
+            </button>
+            <div class="glass segmented lang-switch" role="group" data-i18n-aria="language">
+                <span class="seg-thumb"></span>
+                <button type="button" data-lang="zh">中</button>
+                <button type="button" data-lang="en">EN</button>
             </div>
-            <input type="file" id="upload-input" accept="image/*" hidden>
         </div>
+    </header>
 
-        <div id="workspace" class="workspace" style="display: none;">
-            <div class="preview-section">
-                <div class="canvas-container glass-panel">
-                    <canvas id="preview-canvas"></canvas>
-                    <div id="glass-overlay" class="glass-overlay"></div>
+    <main class="main">
+        <section id="welcome" class="welcome">
+            <div class="hero-art" aria-hidden="true">
+                <div class="hero-pane pane-1"></div>
+                <div class="hero-pane pane-2"></div>
+                <div class="hero-pane pane-3"></div>
+                <svg class="hero-icon"><use href="#app-icon"/></svg>
+            </div>
+            <p class="eyebrow" data-i18n="heroEyebrow">FUJIFILM F-Log2C · 官方 LUT</p>
+            <h1 data-i18n="heroTitle">给照片盖上一层胶片玻璃</h1>
+            <p class="hero-sub" data-i18n="heroSub">选一张照片，左右滑一滑，就能换上富士胶片的颜色。</p>
+            <label for="file-input" class="glass-btn primary hero-btn" tabindex="0" role="button">
+                <svg class="icon"><use href="#i-plus"/></svg>
+                <span data-i18n="choosePhoto">选择照片</span>
+            </label>
+            <ol class="steps">
+                <li><span class="glass step-icon"><svg class="icon"><use href="#i-photo"/></svg></span><span data-i18n="step1">选照片</span></li>
+                <li class="step-line" aria-hidden="true"></li>
+                <li><span class="glass step-icon"><svg class="icon"><use href="#i-swipe"/></svg></span><span data-i18n="step2">左右滑</span></li>
+                <li class="step-line" aria-hidden="true"></li>
+                <li><span class="glass step-icon"><svg class="icon"><use href="#i-save"/></svg></span><span data-i18n="step3">保存</span></li>
+            </ol>
+            <p class="hint" data-i18n="dropHint">也可以把照片拖进来 · 照片只在你的设备上处理，不会上传</p>
+            <input type="file" id="file-input" accept="image/*" hidden>
+        </section>
+
+        <section id="studio" class="studio" hidden>
+            <div class="stage" id="stage">
+                <div class="canvas-wrap" id="canvas-wrap">
+                    <canvas id="gl-canvas"></canvas>
+                    <div class="photo-rim" aria-hidden="true"></div>
+                    <div class="pane-label glass" id="pane-label" aria-hidden="true">
+                        <span class="pane-cat" id="pane-cat"></span>
+                        <strong class="pane-name" id="pane-name"></strong>
+                        <span class="pane-progress" id="pane-progress"></span>
+                    </div>
+                    <div class="swipe-hint glass" id="swipe-hint" hidden>
+                        <span class="hint-hand"></span>
+                        <span data-i18n="swipeHint">左右滑动，换一块胶片</span>
+                    </div>
+                    <div class="compare-badge glass" id="compare-badge" data-i18n="original">原图</div>
                 </div>
+                <button class="glass nav-arrow prev" id="prev-btn" type="button" data-i18n-aria="prev"><svg class="icon"><use href="#i-left"/></svg></button>
+                <button class="glass nav-arrow next" id="next-btn" type="button" data-i18n-aria="next"><svg class="icon"><use href="#i-right"/></svg></button>
+                <div class="glass page-dots" id="page-dots" aria-hidden="true"></div>
             </div>
 
-            <aside class="control-panel glass-panel">
-                <div class="control-group">
-                    <label class="control-label" data-i18n="selectLUT">选择胶片风格</label>
-                    <div class="lut-dropdown glass-dropdown" id="lut-dropdown">
-                        <span id="current-lut-name" data-i18n="noLutSelected">请选择风格</span>
-                        <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12">
-                            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                        </svg>
-                    </div>
-                    <div id="lut-menu" class="lut-menu glass-menu" style="display: none;"></div>
+            <aside class="inspector glass" id="inspector">
+                <div class="inspector-head">
+                    <h2 data-i18n="adjust">调整</h2>
+                    <button class="glass-btn ghost compact" id="reset-btn" type="button">
+                        <svg class="icon"><use href="#i-reset"/></svg>
+                        <span data-i18n="reset">恢复默认</span>
+                    </button>
                 </div>
 
-                <div class="lut-swiper-wrapper">
-                    <div id="lut-swiper" class="lut-swiper"></div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" data-i18n="adjustments">调整参数</label>
-                    
-                    <div class="slider-group">
-                        <div class="slider-header">
-                            <span data-i18n="intensity">LUT 强度</span>
-                            <span class="slider-value"><span id="intensity-value">100</span>%</span>
-                        </div>
-                        <input type="range" id="intensity-slider" class="glass-slider" min="0" max="1" step="0.01" value="1">
-                    </div>
-
-                    <div class="slider-group">
-                        <div class="slider-header">
-                            <span data-i18n="contrast">对比度</span>
-                            <span class="slider-value"><span id="contrast-value">100</span>%</span>
-                        </div>
-                        <input type="range" id="contrast-slider" class="glass-slider" min="0.5" max="1.5" step="0.01" value="1">
-                    </div>
-
-                    <div class="slider-group">
-                        <div class="slider-header">
-                            <span data-i18n="saturation">饱和度</span>
-                            <span class="slider-value"><span id="saturation-value">100</span>%</span>
-                        </div>
-                        <input type="range" id="saturation-slider" class="glass-slider" min="0" max="2" step="0.01" value="1">
+                <div class="control source-control">
+                    <span class="control-label" data-i18n="source">照片类型</span>
+                    <div class="glass segmented source-switch" role="group">
+                        <span class="seg-thumb"></span>
+                        <button type="button" data-source="photo" data-i18n="sourcePhoto">普通照片</button>
+                        <button type="button" data-source="log" data-i18n="sourceLog">Log 素材</button>
                     </div>
                 </div>
 
-                <div class="control-group button-group">
-                    <button id="reset-btn" class="glass-button btn-secondary" data-i18n="reset">重置</button>
-                    <button id="download-btn" class="glass-button btn-primary" data-i18n="download">下载图片</button>
+                <div class="control slider-control" data-param="intensity">
+                    <div class="slider-head">
+                        <svg class="icon"><use href="#i-strength"/></svg>
+                        <span data-i18n="intensity">效果强度</span>
+                        <output id="intensity-value">100</output>
+                    </div>
+                    <input class="liquid-range" type="range" id="intensity-slider" min="0" max="100" step="1" value="100" data-default="100">
                 </div>
+
+                <div class="control slider-control" data-param="contrast">
+                    <div class="slider-head">
+                        <svg class="icon"><use href="#i-contrast"/></svg>
+                        <span data-i18n="contrast">明暗对比</span>
+                        <output id="contrast-value">0</output>
+                    </div>
+                    <input class="liquid-range bipolar" type="range" id="contrast-slider" min="-50" max="50" step="1" value="0" data-default="0">
+                </div>
+
+                <div class="control slider-control" data-param="saturation">
+                    <div class="slider-head">
+                        <svg class="icon"><use href="#i-colour"/></svg>
+                        <span data-i18n="saturation">色彩浓度</span>
+                        <output id="saturation-value">0</output>
+                    </div>
+                    <input class="liquid-range bipolar" type="range" id="saturation-slider" min="-100" max="100" step="1" value="0" data-default="0">
+                </div>
+
+                <p class="note" data-i18n="note">预览为近似效果</p>
             </aside>
+
+            <nav class="dock glass" id="dock">
+                <button class="style-pill" id="style-btn" type="button" aria-haspopup="dialog" aria-expanded="false">
+                    <canvas class="style-chip" id="style-chip" width="72" height="72"></canvas>
+                    <span class="style-text">
+                        <small data-i18n="filmStyle">胶片风格</small>
+                        <strong id="style-name">原图</strong>
+                    </span>
+                    <svg class="icon chevron"><use href="#i-chevron-up"/></svg>
+                </button>
+                <div class="dock-actions">
+                    <button class="glass-btn icon-only adjust-toggle" id="adjust-btn" type="button" aria-pressed="false">
+                        <svg class="icon"><use href="#i-sliders"/></svg>
+                        <span data-i18n="adjust">调整</span>
+                    </button>
+                    <button class="glass-btn icon-only" id="compare-btn" type="button">
+                        <svg class="icon"><use href="#i-compare"/></svg>
+                        <span class="label-long" data-i18n="compare">按住看原图</span>
+                        <span class="label-short" data-i18n="compareShort">原图</span>
+                    </button>
+                    <button class="glass-btn primary" id="download-btn" type="button">
+                        <svg class="icon"><use href="#i-save"/></svg>
+                        <span data-i18n="save">保存</span>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="menu-scrim" id="menu-scrim" hidden></div>
+            <div class="style-menu glass" id="style-menu" role="dialog" aria-modal="true" hidden>
+                <div class="menu-grabber" aria-hidden="true"></div>
+                <div class="menu-head">
+                    <h2 data-i18n="chooseStyle">选择胶片风格</h2>
+                    <button class="glass-btn round" id="menu-close" type="button" data-i18n-aria="close"><svg class="icon"><use href="#i-close"/></svg></button>
+                </div>
+                <div class="glass segmented cat-tabs" id="cat-tabs" role="tablist">
+                    <span class="seg-thumb"></span>
+                </div>
+                <div class="style-list" id="style-list"></div>
+                <button class="menu-original" id="menu-original" type="button">
+                    <svg class="icon"><use href="#i-compare"/></svg>
+                    <span data-i18n="backToOriginal">回到原图</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div class="drop-veil" id="drop-veil" hidden>
+        <div class="glass drop-card">
+            <svg class="icon"><use href="#i-photo"/></svg>
+            <span data-i18n="dropVeil">松手，放下照片</span>
         </div>
     </div>
 
-    <div id="loading" class="loading" style="display: none;">
-        <div class="glass-spinner"></div>
-        <p class="loading-text" data-i18n="processing">处理中...</p>
-    </div>
+    <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
 
-    <script src="js/lut-engine.js"></script>
     <script src="js/i18n.js"></script>
+    <script src="js/renderer.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

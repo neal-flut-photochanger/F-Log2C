@@ -1,96 +1,108 @@
 {
   "luts": [
     {
-      "id": "acros",
-      "file": "FLog2C_to_ACROS_65grid_V.1.00.cube",
-      "name_en": "ACROS",
-      "name_zh": "ACROS 黑白",
-      "description_en": "Monochrome film simulation with rich tonal gradation",
-      "description_zh": "丰富层次的黑白胶片模拟"
-    },
-    {
-      "id": "astia",
-      "file": "FLog2C_to_ASTIA_65grid_V.1.00.cube",
-      "name_en": "ASTIA",
-      "name_zh": "ASTIA 柔和",
-      "description_en": "Soft color reproduction ideal for portraits",
-      "description_zh": "柔和色彩适合人像摄影"
-    },
-    {
-      "id": "classic-chrome",
-      "file": "FLog2C_to_CLASSIC-CHROME_65grid_V.1.00.cube",
-      "name_en": "Classic Chrome",
-      "name_zh": "经典正片",
-      "description_en": "Muted colors with deep shadows",
-      "description_zh": "低饱和度深阴影复古风格"
-    },
-    {
-      "id": "classic-neg",
-      "file": "FLog2C_to_CLASSIC-Neg._65grid_V.1.00.cube",
-      "name_en": "Classic Neg.",
-      "name_zh": "经典负片",
-      "description_en": "Warm color negative film aesthetic",
-      "description_zh": "温暖的负片胶片质感"
-    },
-    {
-      "id": "eterna-bb",
-      "file": "FLog2C_to_ETERNA-BB_65grid_V.1.00.cube",
-      "name_en": "ETERNA Bleach Bypass",
-      "name_zh": "ETERNA 漂白",
-      "description_en": "Desaturated look with enhanced contrast",
-      "description_zh": "去饱和高对比度电影感"
-    },
-    {
-      "id": "eterna",
-      "file": "FLog2C_to_ETERNA_65grid_V.1.00.cube",
-      "name_en": "ETERNA",
-      "name_zh": "ETERNA 电影",
-      "description_en": "Cinematic colors with subdued contrast",
-      "description_zh": "柔和对比度的电影色调"
-    },
-    {
-      "id": "flog2c-709",
-      "file": "FLog2C_to_FLog2C-709_65grid_V.1.00.cube",
-      "name_en": "F-Log2C to Rec.709",
-      "name_zh": "标准转换",
-      "description_en": "Standard conversion to Rec.709 color space",
-      "description_zh": "标准 Rec.709 色彩空间转换"
-    },
-    {
-      "id": "pro-neg-std",
-      "file": "FLog2C_to_PRO-Neg.Std_65grid_V.1.00.cube",
-      "name_en": "PRO Neg. Std",
-      "name_zh": "专业负片标准",
-      "description_en": "Neutral colors for professional work",
-      "description_zh": "中性色调适合专业工作"
-    },
-    {
       "id": "provia",
       "file": "FLog2C_to_PROVIA_65grid_V.1.00.cube",
+      "category": "vivid",
       "name_en": "PROVIA",
       "name_zh": "PROVIA 标准",
       "description_en": "Standard color reproduction with vivid saturation",
       "description_zh": "标准色彩鲜艳饱和"
     },
     {
-      "id": "reala-ace",
-      "file": "FLog2C_to_REALA-ACE_65grid_V.1.00.cube",
-      "name_en": "REALA ACE",
-      "name_zh": "REALA ACE",
-      "description_en": "Natural skin tones with accurate colors",
-      "description_zh": "自然肤色准确色彩还原"
-    },
-    {
       "id": "velvia",
       "file": "FLog2C_to_Velvia_65grid_V.1.00.cube",
+      "category": "vivid",
       "name_en": "Velvia",
       "name_zh": "Velvia 鲜艳",
       "description_en": "Highly saturated vivid colors",
       "description_zh": "高饱和度鲜艳色彩"
     },
     {
+      "id": "reala-ace",
+      "file": "FLog2C_to_REALA-ACE_65grid_V.1.00.cube",
+      "category": "vivid",
+      "name_en": "REALA ACE",
+      "name_zh": "REALA ACE",
+      "description_en": "Natural skin tones with accurate colors",
+      "description_zh": "自然肤色准确色彩还原"
+    },
+    {
+      "id": "astia",
+      "file": "FLog2C_to_ASTIA_65grid_V.1.00.cube",
+      "category": "soft",
+      "name_en": "ASTIA",
+      "name_zh": "ASTIA 柔和",
+      "description_en": "Soft color reproduction ideal for portraits",
+      "description_zh": "柔和色彩适合人像摄影"
+    },
+    {
+      "id": "pro-neg-std",
+      "file": "FLog2C_to_PRO-Neg.Std_65grid_V.1.00.cube",
+      "category": "soft",
+      "name_en": "PRO Neg. Std",
+      "name_zh": "专业负片标准",
+      "description_en": "Neutral colors for professional work",
+      "description_zh": "中性色调适合专业工作"
+    },
+    {
+      "id": "classic-neg",
+      "file": "FLog2C_to_CLASSIC-Neg._65grid_V.1.00.cube",
+      "category": "soft",
+      "name_en": "Classic Neg.",
+      "name_zh": "经典负片",
+      "description_en": "Warm color negative film aesthetic",
+      "description_zh": "温暖的负片胶片质感"
+    },
+    {
+      "id": "classic-chrome",
+      "file": "FLog2C_to_CLASSIC-CHROME_65grid_V.1.00.cube",
+      "category": "cinema",
+      "name_en": "Classic Chrome",
+      "name_zh": "经典正片",
+      "description_en": "Muted colors with deep shadows",
+      "description_zh": "低饱和度深阴影复古风格"
+    },
+    {
+      "id": "eterna",
+      "file": "FLog2C_to_ETERNA_65grid_V.1.00.cube",
+      "category": "cinema",
+      "name_en": "ETERNA",
+      "name_zh": "ETERNA 电影",
+      "description_en": "Cinematic colors with subdued contrast",
+      "description_zh": "柔和对比度的电影色调"
+    },
+    {
+      "id": "eterna-bb",
+      "file": "FLog2C_to_ETERNA-BB_65grid_V.1.00.cube",
+      "category": "cinema",
+      "name_en": "ETERNA Bleach Bypass",
+      "name_zh": "ETERNA 漂白",
+      "description_en": "Desaturated look with enhanced contrast",
+      "description_zh": "去饱和高对比度电影感"
+    },
+    {
+      "id": "acros",
+      "file": "FLog2C_to_ACROS_65grid_V.1.00.cube",
+      "category": "mono",
+      "name_en": "ACROS",
+      "name_zh": "ACROS 黑白",
+      "description_en": "Monochrome film simulation with rich tonal gradation",
+      "description_zh": "丰富层次的黑白胶片模拟"
+    },
+    {
+      "id": "flog2c-709",
+      "file": "FLog2C_to_FLog2C-709_65grid_V.1.00.cube",
+      "category": "neutral",
+      "name_en": "F-Log2C to Rec.709",
+      "name_zh": "标准转换",
+      "description_en": "Standard conversion to Rec.709 color space",
+      "description_zh": "标准 Rec.709 色彩空间转换"
+    },
+    {
       "id": "wdr-709",
       "file": "FLog2C_to_WDR-709_65grid_V.1.10.cube",
+      "category": "neutral",
       "name_en": "WDR (Wide Dynamic Range)",
       "name_zh": "宽动态范围",
       "description_en": "Enhanced shadow and highlight detail",

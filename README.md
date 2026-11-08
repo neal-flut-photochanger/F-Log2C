@@ -1,20 +1,17 @@
-# F-Log2C LUT 预览工具 / F-Log2C LUT Preview Tool
+# Film Glass · F-Log2C 胶片实验室 / Film Lab
 
 ## 🎯 项目简介 / Project Overview
 
-这是一个专业的 F-Log2C LUT（色彩查找表）在线预览工具，支持实时预览 Fujifilm F-Log2C 胶片模拟效果。
-
-A professional F-Log2C LUT (Look-Up Table) online preview tool that supports real-time preview of Fujifilm F-Log2C film simulation effects.
+Film Glass 是一款采用 Apple 液态玻璃（Liquid Glass）视觉语言的富士 F-Log2C 官方 LUT 实时预览与调色工具。支持上传任意照片或 Log 素材，通过左右滑动玻璃切片或二级分类菜单实时体验 12 款富士官方胶片模拟。
 
 ## ✨ 主要特性 / Key Features
 
-- 📸 **图片上传**：支持 JPG、PNG、WebP 格式
-- 🎨 **12 种 LUT 风格**：PROVIA、Velvia、ETERNA、Classic Chrome 等
-- 🎛️ **实时调整**：LUT 强度、对比度、饱和度三重控制
-- 🌏 **中英文切换**：完整的国际化支持
-- 📱 **响应式设计**：完美适配手机、平板、桌面设备
-- 🎭 **深色科技风格**：玻璃态 UI + 渐变光效
-- 💾 **一键下载**：导出处理后的图片
+- 🪟 **液态玻璃实时滑动**：在照片上左右滑动（支持鼠标拖拽、触控屏滑动、触控板双指滑动与方向键），如同将一块带折射边缘的透明胶片玻璃盖在照片上
+- 🗂️ **二级分类胶片菜单**：按「鲜艳 / 柔和 / 电影 / 黑白 / 中性」五大分类组织 12 款富士官方 65³ 3D LUT，告别杂乱平铺，并实时渲染照片缩略图
+- 🖼️ **画布常驻不遮挡**：无滚动一屏式工作台设计，桌面端侧边栏与移动端折叠面板确保调色与选风格时画面始终实时可见
+- 🎛️ **液态玻璃双极性滑块**：支持效果强度（0–100）、明暗对比（-50–+50）、色彩浓度（-100–+100）实时调节，双击滑块即可归零，支持普通照片（自动转换至 F-Log2C / F-Gamut C）与 Log 素材切换
+- 🌏 **中英文无缝切换**：极简直观的三步引导，小朋友也能轻松上手
+- 💾 **高分辨率本地导出**：所有计算基于浏览器本地 WebGL2 完成，照片不上传服务器，一键保存高清成片
 
 ## 🚀 快速开始 / Quick Start
 
@@ -46,18 +43,21 @@ npx serve
 ```
 website/
 ├── index.html              # 主页面
+├── assets/
+│   └── app-icon.svg        # 扁平化 Apple 风格相机图标
 ├── admin/                  # 后台管理
 │   ├── index.html          # 管理页面
 │   ├── admin.css           # 管理样式
 │   └── admin.js            # 管理逻辑
 ├── css/
-│   └── style.css           # 主样式表
+│   └── style.css           # 液态玻璃与响应式工作台样式
 ├── js/
-│   ├── lut-engine.js       # LUT 解析和应用引擎
+│   ├── cube-worker.js      # Web Worker 异步 3D LUT 解析器
+│   ├── renderer.js         # WebGL2 3D LUT 色彩管线与玻璃折射着色器
 │   ├── i18n.js             # 国际化模块
 │   └── main.js             # 主应用逻辑
 ├── luts/                   # LUT 文件目录
-│   ├── luts-config.json    # LUT 配置文件
+│   ├── luts-config.json    # LUT 配置文件（含二级菜单分类）
 │   └── *.cube              # 12 个 LUT 文件 (每个约 7MB)
 └── README.md               # 本文档
 ```

@@ -3,7 +3,7 @@ set -euo pipefail
 
 GITHUB_USER="neal-flut-photochanger"
 REPO_NAME="F-Log2C"
-REMOTE_URL="https://github.com/${GITHUB_USER}/${REPO_NAME}.git"
+REMOTE_URL="https://${GITHUB_USER}@github.com/${GITHUB_USER}/${REPO_NAME}.git"
 SITE_URL="https://${GITHUB_USER}.github.io/${REPO_NAME}/"
 
 cd "$(dirname "$0")"
